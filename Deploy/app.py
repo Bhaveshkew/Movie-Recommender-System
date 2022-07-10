@@ -4,7 +4,7 @@ import pandas as pd
 import requests
 
 def fetch_poster(movie_id):
-    url = "https://api.themoviedb.org/3/movie/{}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US".format(movie_id)
+    url = "https://api.themoviedb.org/3/movie/{}?api_key=<<YOUR_API_KEY>>&language=en-US".format(movie_id)
     data = requests.get(url)
     data = data.json()
     poster_path = data['poster_path']
@@ -32,7 +32,7 @@ similarity = pickle.load(open('similarity.pkl','rb'))
 
 st.title('Movie Recommender System')
 
-selected_movie_name = st.selectbox('How would you like to be contacted ?', movies['title'].values)
+selected_movie_name = st.selectbox('Please Select A Movie Name : ', movies['title'].values)
 
 if st.button('Recommend'):
     names,posters = recommend(selected_movie_name)
